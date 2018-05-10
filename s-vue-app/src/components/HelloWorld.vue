@@ -1,6 +1,11 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <el-input 
+      type="text" 
+      v-model="name" 
+      placeholder="your name"
+      clearable/>
+    <h1> Hello,{{name}} </h1>
   </div>
 </template>
 
@@ -9,7 +14,7 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Krista Vue.js App'
+      name: ''
     }
   }
 }

@@ -4,17 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-// 用于http请求
-import VueResource from 'vue-resource'
-
-import Element from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
-
-Vue.use(Element);
+/* 使用less需要安装：npm i less style-loader css - loader less-loader - D */
+import './assets/todos.less'
 
 Vue.config.productionTip = false
-
-Vue.use(VueResource);
 
 /* eslint-disable no-new */
 new Vue({

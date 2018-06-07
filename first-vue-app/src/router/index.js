@@ -1,9 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-
-import Firstcomponent from '@/components/firstcomponent'
-import Secondcomponent from '@/components/secondcomponent'
+import TodoList from '@/components/TodoList'
 
 Vue.use(Router)
 
@@ -13,14 +11,11 @@ export default new Router({
       path: '/',
       name: 'HelloWorld',
       component: HelloWorld
-    },{
-      path: '/first',
-      name: 'Firstcomponent',
-      component: Firstcomponent
-    },{
-      path: '/second',
-      name: 'Secondcomponent',
-      component: Secondcomponent
+    },
+    {
+      path: '/todolist',
+      name: 'TodoList',
+      component: TodoList
     }
   ]
 })

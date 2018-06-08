@@ -11,18 +11,16 @@ import './lib/jquery-vender'
 import './assets/todos.less'
 
 // 集成bootstrap
-import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.css'
-// import 'bootstrap/dist/js/bootstrap.min.js'
+// import 'bootstrap'
+// import 'bootstrap/dist/css/bootstrap.css'
 
 // 集成font-awesome图标
-import 'font-awesome/css/font-awesome.css'
+// import 'font-awesome/css/font-awesome.css'
 
 // 集成Admin-lte
-import 'admin-lte'
-import 'admin-lte/dist/css/AdminLTE.min.css'
-import 'admin-lte/dist/css/skins/_all-skins.min.css'
-// import 'admin-lte/dist/js/adminlte.min.js'
+// import 'admin-lte'
+// import 'admin-lte/dist/css/AdminLTE.min.css'
+// import 'admin-lte/dist/css/skins/_all-skins.min.css'
 
 Vue.config.productionTip = false
 

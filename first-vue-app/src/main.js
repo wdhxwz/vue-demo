@@ -4,8 +4,25 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-/* 使用less需要安装：npm i less style-loader css - loader less-loader - D */
+// 集成jQuery
+import './lib/jquery-vender'
+
+/* 使用less需要安装：npm i less style-loader css-loader less-loader - D */
 import './assets/todos.less'
+
+// 集成bootstrap
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap/dist/js/bootstrap.min.js'
+
+// 集成font-awesome图标
+import 'font-awesome/css/font-awesome.css'
+
+// 集成Admin-lte
+import 'admin-lte'
+import 'admin-lte/dist/css/AdminLTE.min.css'
+import 'admin-lte/dist/css/skins/_all-skins.min.css'
+// import 'admin-lte/dist/js/adminlte.min.js'
 
 Vue.config.productionTip = false
 

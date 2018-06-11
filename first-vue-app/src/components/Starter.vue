@@ -224,7 +224,7 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="margin:0px;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -250,7 +250,7 @@
   <!-- /.content-wrapper -->
 
   <!-- Main Footer -->
-  <footer class="main-footer">
+  <footer class="main-footer" style="margin:0px;">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
       Anything you want

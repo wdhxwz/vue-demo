@@ -41,17 +41,17 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">菜单</li>
         <!-- 菜单数据 -->
-        <li><a href="#"><i class="fa fa-link"></i> <span>用户管理</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>功能管理</span></a></li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>权限管理</span>
+        <li :class="{'active':isCurrentMenu('menu1')}"><a href="#" @click="setMenu('menu1')"><i class="fa fa-link"></i> <span>用户管理</span></a></li>
+        <li :class="{'active':isCurrentMenu('menu2')}"><a href="#"  @click="setMenu('menu2')"><i class="fa fa-link"></i> <span>功能管理</span></a></li>
+        <li :class="{'treeview':true,'active':isCurrentMenu('menu3')}">
+          <a href="#"  @click="setMenu('menu3')"><i class="fa fa-link" ></i> <span>权限管理</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
+            <li><a href="#" @click="setMenu('menu3')">Link in level 2</a></li>
+            <li><a href="#" @click="setMenu('menu3')">Link in level 2</a></li>
           </ul>
         </li>
       </ul>
@@ -90,7 +90,22 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      activeMenu :''
+    }
+  },
+  methods: {
+    setMenu:function(menuId){
+      this.activeMenu = menuId;
+    },
+    isCurrentMenu:function(menuId){
+      if(this.activeMenu){
+        return this.activeMenu == menuId;
+      }else{
+        this.activeMenu = menuId;
+
+        return true;
+      }
     }
   }
 }

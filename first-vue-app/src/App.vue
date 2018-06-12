@@ -8,7 +8,14 @@
 <!-- 组件定义 -->
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  watch:{
+    // 监听路由改变
+    '$route':function(to,from){
+      console.log(to);
+      console.log(from);
+    }
+  }
 }
 </script>
 

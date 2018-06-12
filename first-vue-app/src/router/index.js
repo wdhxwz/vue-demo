@@ -9,8 +9,10 @@ import Home from '@/Home'
 import Cart from '@/Cart'
 import Explorer from '@/Explorer'
 import Me from '@/Me'
+import Frame from '@/Frame'
+import BookDetail from '@/books/Detail'
 
-Vue.use(Router)
+Vue.use(Router) 
 
 export default new Router({
 
@@ -18,29 +20,37 @@ export default new Router({
   // history --> http://localhost/home
   // hash(default) --> http://localhost/#home
   mode: 'history',
+  linkActiveClass: "active",
   routes: [
     {
-      path: '/home',
-      name: 'Home',
-      component: Home
-    },
-    {
-      path: '/cart',
-      name: 'Cart',
-      component: Cart
-    },
-    {
-      path: '/me',
-      name: 'Me',
-      component: Me
-    },
-    {
-      path: '/explorer',
-      name: 'Explorer',
-      component: Explorer
-    },
-    {
       path: '/',
+      name: 'Frame',
+      component: Frame,
+      children:[
+        {
+          path: '/home',
+          name: 'Home',
+          component: Home
+        },
+        {
+          path: '/cart',
+          name: 'Cart',
+          component: Cart
+        },
+        {
+          path: '/me',
+          name: 'Me',
+          component: Me
+        },
+        {
+          path: '/explorer',
+          name: 'Explorer',
+          component: Explorer
+        }
+      ]
+    },
+    {
+      path: '/helloworld',
       name: 'HelloWorld',
       component: HelloWorld
     },
@@ -53,6 +63,12 @@ export default new Router({
       path: '/starter',
       name: 'Starter',
       component: Starter
+    }
+    ,
+    {
+      path: '/bookdetail/:id',
+      name: 'BookDetail',
+      component: BookDetail
     }
   ]
 })

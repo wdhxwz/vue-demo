@@ -11,11 +11,15 @@ import './lib/jquery-vender'
 import './assets/todos.less'
 
 // 集成bootstrap
-// import 'bootstrap'
-// import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.css'
 
 // 集成font-awesome图标
-// import 'font-awesome/css/font-awesome.css'
+import 'font-awesome/css/font-awesome.css'
+
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper)
 
 // 集成Admin-lte
 // import 'admin-lte'

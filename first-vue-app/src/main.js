@@ -16,19 +16,15 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 // 集成font-awesome图标
 import 'font-awesome/css/font-awesome.css'
-<<<<<<< HEAD
-
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.css'
-Vue.use(VueAwesomeSwiper)
-=======
->>>>>>> a3cbd2914bcdc676abe846720b1d733f53f26427
 
 // 集成Admin-lte
 import 'admin-lte'
 import 'admin-lte/dist/css/AdminLTE.min.css'
 import 'admin-lte/dist/css/skins/_all-skins.min.css'
 
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

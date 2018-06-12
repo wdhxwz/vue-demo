@@ -45,11 +45,11 @@
         <li :class="{'active':isCurrentMenu('menu2')}"><a href="#"  @click="setMenu('menu2')"><i class="fa fa-link"></i> <span>功能管理</span></a></li>
         <li :class="{'treeview':true,'active':isCurrentMenu('menu3')}">
           <a href="#"  @click="setMenu('menu3')"><i class="fa fa-link" ></i> <span>权限管理</span>
-            <span class="pull-right-container">
+            <!-- <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
-              </span>
+              </span> -->
           </a>
-          <ul class="treeview-menu">
+          <ul :class="{'treeview-menu':true,'menu-open':isOpenMenu('menu3')}">
             <li><a href="#" @click="setMenu('menu3')">Link in level 2</a></li>
             <li><a href="#" @click="setMenu('menu3')">Link in level 2</a></li>
           </ul>
@@ -91,7 +91,8 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      activeMenu :''
+      activeMenu :'',
+      isFirstClick: false
     }
   },
   methods: {
@@ -106,6 +107,11 @@ export default {
 
         return true;
       }
+    },
+    isOpenMenu:function(menuId){
+      this.isFirstClick = !(this.activeMenu == menuId );
+
+      return this.isFirstClick;
     }
   }
 }

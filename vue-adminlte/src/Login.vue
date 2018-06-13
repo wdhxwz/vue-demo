@@ -37,6 +37,7 @@
       }
     }
   }
+  // https://github.com/liujians/vue-adminLte-vue-router
 </script>
 
 <style scoped >

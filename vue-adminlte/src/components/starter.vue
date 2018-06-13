@@ -27,7 +27,7 @@
           </li>
           <!-- 退出登录 -->
           <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-sign-out"></i></a>
+            <a href="#" data-toggle="control-sidebar" @click="logout"><i class="fa fa-sign-out"></i></a>
           </li>
         </ul>
       </div>
@@ -91,28 +91,35 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      activeMenu :'',
+      activeMenu: '',
       isFirstClick: false
     }
   },
   methods: {
-    setMenu:function(menuId){
-      this.activeMenu = menuId;
+    setMenu: function (menuId) {
+      this.activeMenu = menuId
     },
-    isCurrentMenu:function(menuId){
-      if(this.activeMenu){
-        return this.activeMenu == menuId;
-      }else{
-        this.activeMenu = menuId;
+    isCurrentMenu: function (menuId) {
+      if (this.activeMenu) {
+        return this.activeMenu === menuId
+      } else {
+        this.activeMenu = menuId
 
-        return true;
+        return true
       }
     },
-    isOpenMenu:function(menuId){
-      this.isFirstClick = !(this.activeMenu == menuId );
+    isOpenMenu: function (menuId) {
+      this.isFirstClick = !(this.activeMenu === menuId)
 
-      return this.isFirstClick;
+      return this.isFirstClick
+    },
+    logout: function () {
+      window.localStorage.clear()
+      this.$router.push('/login')
     }
+  },
+  mounted: function () {
+    window.$(window).resize()
   }
 }
 </script>

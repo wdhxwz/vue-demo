@@ -12,6 +12,10 @@ import 'font-awesome/css/font-awesome.css'
 import 'admin-lte/dist/css/AdminLTE.min.css'
 import 'admin-lte/dist/css/skins/_all-skins.min.css'
 
+// 引入axios
+import axios from 'axios'
+Vue.prototype.axios = axios
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

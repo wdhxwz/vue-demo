@@ -4,7 +4,7 @@
   <header class="main-header">
     <!-- logo -->
     <a href="#" class="logo">
-      <span class="logo-lg">XXX管理后台</span>
+      <span class="logo-lg">权限管理中心</span>
     </a>
 
     <!-- 头部导航栏 -->
@@ -39,20 +39,24 @@
     <section class="sidebar">
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">菜单</li>
+        <!-- <li class="header"></li>  -->
         <!-- 菜单数据 -->
-        <li :class="{'active':isCurrentMenu('menu1')}"><a href="#" @click="setMenu('menu1')"><i class="fa fa-link"></i> <span>用户管理</span></a></li>
-        <li :class="{'active':isCurrentMenu('menu2')}"><a href="#"  @click="setMenu('menu2')"><i class="fa fa-link"></i> <span>功能管理</span></a></li>
-        <li :class="{'treeview':true,'active':isCurrentMenu('menu3')}">
-          <a href="#"  @click="setMenu('menu3')"><i class="fa fa-link" ></i> <span>权限管理</span>
-            <!-- <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span> -->
+        <li :class="{'active':isCurrentMenu('menu1')}" @click="setMenu('menu1','用户管理')">
+          <router-link to='/user'>
+            <i class="fa fa-circle-o"></i> <span>用户管理</span>
+          </router-link>
+        </li>
+        <li :class="{'active':isCurrentMenu('menu2')}" @click="setMenu('menu2','功能管理')">
+          <router-link to='/privilege'>
+            <i class="fa fa-circle-o"></i> <span>功能管理</span>
+          </router-link>
+        </li>
+
+        <li :class="{'active':isCurrentMenu('menu3')}" @click="setMenu('menu3','角色管理')">
+             <router-link to='/role'>
+            <i class="fa fa-circle-o"></i> <span>角色管理</span>
+          </router-link>
           </a>
-          <ul :class="{'treeview-menu':true,'menu-open':isOpenMenu('menu3')}">
-            <li><a href="#" @click="setMenu('menu3')">Link in level 2</a></li>
-            <li><a href="#" @click="setMenu('menu3')">Link in level 2</a></li>
-          </ul>
         </li>
       </ul>
     </section>
@@ -62,42 +66,45 @@
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        页面标题
+        {{ headTitle }}
       </h1>
       <!-- 面包屑 -->
+      <!--
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i>用户管理</a></li>
         <li class="active">用户列表</li>
       </ol>
+      -->
     </section>
 
     <!-- 主题内容 -->
     <section class="content container-fluid">
-     <div>我是存放内容的</div>
+      <div>
+        <router-view></router-view>
+      </div>
     </section>
   </div>
 
   <!--页脚部分 -->
   <footer class="main-footer">
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2018 <a href="#">Krista</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2018 <a href="http://www.krista520.cn">Krista</a>.</strong> All rights reserved.
   </footer>
   <div class="control-sidebar-bg"></div>
 </div>
 </template>
 <script>
 export default {
-  name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
       activeMenu: '',
-      isFirstClick: false
+      headTitle: '用户管理'
     }
   },
   methods: {
-    setMenu: function (menuId) {
+    setMenu: function (menuId, headTitle) {
       this.activeMenu = menuId
+      this.headTitle = headTitle
     },
     isCurrentMenu: function (menuId) {
       if (this.activeMenu) {
@@ -107,11 +114,6 @@ export default {
 
         return true
       }
-    },
-    isOpenMenu: function (menuId) {
-      this.isFirstClick = !(this.activeMenu === menuId)
-
-      return this.isFirstClick
     },
     logout: function () {
       window.localStorage.clear()

@@ -5,6 +5,9 @@ import starter from '@/components/starter'
 import store from '../store/store'
 import * as types from '../store/types'
 import Login from '../login.vue'
+import User from '../views/User'
+import Privilege from '../views/Privilege'
+import Role from '../views/Role'
 
 Vue.use(Router)
 
@@ -16,7 +19,34 @@ const router = new Router({
       meta: {
         requireAuth: true // 添加该字段，表示进入这个路由是需要登录的
       },
-      component: starter
+      component: starter,
+      // 二级路由配置
+      children: [
+        {
+          path: '/user',
+          name: 'user',
+          component: User,
+          meta: {
+            requireAuth: true
+          }
+        },
+        {
+          path: '/privilege',
+          name: 'privilege',
+          component: Privilege,
+          meta: {
+            requireAuth: true
+          }
+        },
+        {
+          path: '/role',
+          name: 'role',
+          component: Role,
+          meta: {
+            requireAuth: true
+          }
+        }
+      ]
     },
     {
       path: '/hello',

@@ -27,7 +27,8 @@ const router = new Router({
           name: 'user',
           component: User,
           meta: {
-            requireAuth: true
+            requireAuth: true,
+            headTitle: '用户管理'
           }
         },
         {
@@ -35,7 +36,8 @@ const router = new Router({
           name: 'privilege',
           component: Privilege,
           meta: {
-            requireAuth: true
+            requireAuth: true,
+            headTitle: '功能管理'
           }
         },
         {
@@ -43,7 +45,8 @@ const router = new Router({
           name: 'role',
           component: Role,
           meta: {
-            requireAuth: true
+            requireAuth: true,
+            headTitle: '角色管理'
           }
         }
       ]

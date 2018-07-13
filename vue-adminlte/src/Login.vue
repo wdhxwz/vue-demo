@@ -27,7 +27,7 @@
       login () {
         if (this.token) {
           this.$store.commit(types.LOGIN, this.token)
-          let redirect = decodeURIComponent(this.$route.query.redirect || '/')
+          let redirect = decodeURIComponent(this.$route.query.redirect || '/user')
           this.$router.push({
             path: redirect
           })

@@ -41,22 +41,21 @@
       <ul class="sidebar-menu" data-widget="tree">
         <!-- <li class="header"></li>  -->
         <!-- 菜单数据 -->
-        <li :class="{'active':isCurrentMenu('user')}" @click="setMenu('menu1','用户管理')">
+        <li :class="{'active':isCurrentMenu('user')}" @click="setMenu('user','用户管理')">
           <router-link to='/user'>
             <i class="fa fa-circle-o"></i> <span>用户管理</span>
           </router-link>
         </li>
-        <li :class="{'active':isCurrentMenu('privilege')}" @click="setMenu('menu2','功能管理')">
+        <li :class="{'active':isCurrentMenu('privilege')}" @click="setMenu('privilege','功能管理')">
           <router-link to='/privilege'>
             <i class="fa fa-circle-o"></i> <span>功能管理</span>
           </router-link>
         </li>
 
-        <li :class="{'active':isCurrentMenu('role')}" @click="setMenu('menu3','角色管理')">
+        <li :class="{'active':isCurrentMenu('role')}" @click="setMenu('role','角色管理')">
              <router-link to='/role'>
             <i class="fa fa-circle-o"></i> <span>角色管理</span>
           </router-link>
-          </a>
         </li>
       </ul>
     </section>

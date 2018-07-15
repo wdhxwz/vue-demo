@@ -3,11 +3,19 @@
   <div class="signin">
 			<div class="signin-head"><img src="./assets/bg/login/user3-128x128.jpg" alt="" class="img-circle"></div>
 			<form class="form-signin" role="form" @submit.stop.prevent="login">
-				<input type="text" class="form-control" placeholder="用户名" required autofocus />
-				<input type="password" class="form-control" placeholder="密码"  required/> <!-- -->
-				<button class="btn btn-lg btn-warning btn-block" type="submit">登录</button>
-				<label class="checkbox">
-					<input type="checkbox" value="remember-me"> 记住我
+				
+        <input type="text" class="form-control" placeholder="用户名" required autofocus 
+          oninvalid="setCustomValidity('请输入用户名')" oninput="setCustomValidity('')"
+          onkeyup="this.value=this.value.replace(/\s+/g,'')" v-model="userName"/>
+				
+        <input type="password" class="form-control" placeholder="密码"  required
+          oninvalid="setCustomValidity('请输入密码')" oninput="setCustomValidity('')"
+          onkeyup="this.value=this.value.replace(/\s+/g,'')" v-model="password"/> 
+				
+        <button class="btn btn-lg btn-warning btn-block" type="submit">登录</button>
+				
+        <label class="checkbox">
+					<input type="checkbox" value="remember-me" v-model="rememberMe"> 记住我
 				</label>
 			</form>
 		</div>
@@ -21,8 +29,9 @@
     name: '',
     data () {
       return {
-        msg: '',
-        token: ''
+        userName: '',
+        password: '',
+        rememberMe: false
       }
     },
     mounted () {
@@ -31,16 +40,28 @@
     },
     methods: {
       login () {
-        this.token = '123'
-        if (this.token) {
-          this.$store.commit(types.LOGIN, this.token)
-          let redirect = decodeURIComponent(this.$route.query.redirect || '/user')
-          this.$router.push({
-            path: redirect
-          })
-        } else {
-          alert('请输入token')
-        }
+        var self = this
+        this.axios.post('api/user/login.do', {
+          'userName': this.userName,
+          'password': this.md5(this.password)
+        }).then(function (res) {
+          if (res.data.code !== 200) {
+            self.$toast.warn({
+              title: '登录失败',
+              message: res.data.message
+            })
+          } else {
+            self.$toast.removeAll()
+            self.$store.commit(types.LOGIN, '123')
+            let redirect = decodeURIComponent(self.$route.query.redirect || '/user')
+            self.$router.push({
+              path: redirect
+            })
+          }
+        })
+        .catch(function (err) {
+          console.log(err)
+        })
       }
     }
   }
@@ -85,6 +106,10 @@ html,body {
 .form-signin .checkbox {
   font-weight: normal;
 }
+.checkbox {
+  margin-left: 20px;
+}
+
 .form-signin .form-control {
   position: relative;
   font-size: 16px;

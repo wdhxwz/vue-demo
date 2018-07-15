@@ -4,7 +4,7 @@
   <header class="main-header">
     <!-- logo -->
     <a href="#" class="logo">
-      <span class="logo-lg">权限管理中心</span>
+      <span class="logo-lg"><i class="fa fa-cube"></i>  {{ projectName }}</span>
     </a>
 
     <!-- 头部导航栏 -->
@@ -64,16 +64,9 @@
   <!-- 内容区域 -->
   <div class="content-wrapper">
     <section class="content-header">
-      <h1>
+      <h4>
         {{ headTitle }}
-      </h1>
-      <!-- 面包屑 -->
-      <!--
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>用户管理</a></li>
-        <li class="active">用户列表</li>
-      </ol>
-      -->
+      </h4>
     </section>
 
     <!-- 主题内容 -->
@@ -97,7 +90,8 @@ export default {
   data () {
     return {
       activeMenu: 'user',
-      headTitle: '用户管理'
+      headTitle: '用户管理',
+      projectName: '权限管理中心'
     }
   },
   methods: {
@@ -121,8 +115,22 @@ export default {
   },
   mounted: function () {
     window.$(window).resize()
+    window.$(document).attr('title', this.projectName)
     this.activeMenu = this.$route.name
     this.headTitle = this.$route.meta.headTitle
   }
 }
 </script>
+
+
+<style scoped>
+li > a > span{
+  font-size: 16px;
+}
+.content {
+    padding : 3px 15px 0 15px
+}
+.content-header{
+  padding : 5px 15px 0 15px
+}
+</style>

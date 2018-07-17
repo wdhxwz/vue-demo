@@ -1,6 +1,6 @@
 <template>
 <div class="box">
-    <div class="box-header with-border">
+    <div class="box box-solid box-default box-header with-border">
         <!-- 搜索条件 -->
         <form action="" class="form-inline">
             <div class="input-group" style="width:220px;">
@@ -31,7 +31,7 @@
         </form>
     </div>
     
-    <div class="box-body">
+    <div class="box box-primary box-body">
         <table class="table table-bordered table-striped table-condensed">
             <thead>
                 <tr>
@@ -188,7 +188,12 @@ tr > td,tr > th{
     text-align: center;
 }
 
+tr > th{
+    background-color: #a7d1e9;
+}
+
 nav {
     float: right;
 }
+
 </style>

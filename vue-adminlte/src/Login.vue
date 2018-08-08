@@ -41,9 +41,22 @@
     methods: {
       login () {
         var self = this
-        this.axios.post('api/user/login.do', {
-          'userName': this.userName,
-          'password': this.md5(this.password)
+        var http = this.axios.create({
+          timeout: 1000 * 30,
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8'
+          }
+        })
+
+        http.interceptors.request.use(config => {
+          config.headers['my'] = '123'
+          return config
+        })
+
+        http.post('api/user/login.do', {
+          'userName': self.userName,
+          'password': self.md5(self.password)
         }).then(function (res) {
           if (res.data.code !== 200) {
             self.$toast.warn({
@@ -58,8 +71,7 @@
               path: redirect
             })
           }
-        })
-        .catch(function (err) {
+        }).catch(function (err) {
           console.log(err)
         })
       }

@@ -51,7 +51,7 @@
     methods: {
       // 提交表单
       dataFormSubmit () {
-        var self = this;
+        var self = this
         this.$refs['dataForm'].validate((valid) => {
           if (valid) {
             this.$http({

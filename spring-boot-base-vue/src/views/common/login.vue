@@ -51,6 +51,7 @@
     methods: {
       // 提交表单
       dataFormSubmit () {
+        var self = this;
         this.$refs['dataForm'].validate((valid) => {
           if (valid) {
             this.$http({
@@ -58,7 +59,7 @@
               method: 'post',
               data: this.$http.adornData({
                 'username': this.dataForm.userName,
-                'password': this.dataForm.password
+                'password': self.md5(this.dataForm.password)
               })
             }).then(({data}) => {
               if (data && data.code === 0) {

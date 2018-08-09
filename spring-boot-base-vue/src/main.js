@@ -10,6 +10,8 @@ import '@/assets/scss/index.scss'
 import httpRequest from '@/utils/httpRequest' // api: https://github.com/axios/axios
 import { isAuth } from '@/utils'
 
+import md5 from 'js-md5'
+
 Vue.use(VueCookie)
 Vue.config.productionTip = false
 
@@ -21,6 +23,9 @@ if (process.env.NODE_ENV !== 'production') {
 // 挂载全局
 Vue.prototype.$http = httpRequest // ajax请求方法
 Vue.prototype.isAuth = isAuth     // 权限方法
+
+// 引入md5
+Vue.prototype.md5 = md5
 
 /* eslint-disable no-new */
 new Vue({

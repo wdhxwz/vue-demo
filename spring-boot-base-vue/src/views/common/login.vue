@@ -1,22 +1,24 @@
 <template>
-  <div class="site-wrapper site-page--login">
-    <div class="site-content__wrapper">
-      <div class="site-content">
-        <div class="login-main">
-          <h3 class="login-title">管理员登录</h3>
-          <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" status-icon>
-            <el-form-item prop="userName">
-              <el-input v-model="dataForm.userName" placeholder="帐号"></el-input>
-            </el-form-item>
-            <el-form-item prop="password">
-              <el-input v-model="dataForm.password" type="password" placeholder="密码"></el-input>
-            </el-form-item>
-            <el-form-item>
-              <el-button class="login-btn-submit" type="primary" @click="dataFormSubmit()">登录</el-button>
-            </el-form-item>
-          </el-form>
-        </div>
-      </div>
+  <div class="bg" style="height: 974px;">
+    <div class="signin">
+	     <div class="signin-head">
+         <img src="~@/assets/bg/login/user3-128x128.jpg" alt="" class="img-circle">
+       </div>
+      <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" status-icon style="padding:43px 15px 15px 15px;">
+        <el-form-item prop="userName" style="padding-left: 80px;">
+          <el-input v-model="dataForm.userName" placeholder="帐号" style="height:44px ;width:300px;">
+            <i slot="prefix" class="el-input__icon"></i>
+          </el-input>
+        </el-form-item>
+        <el-form-item prop="password" style="padding-left: 80px;">
+          <el-input v-model="dataForm.password" type="password" placeholder="密码" style="height:44px;width:300px;">
+            <i slot="prefix" class="el-input__icon"></i>
+          </el-input>
+        </el-form-item>
+        <el-form-item style="padding-left:80px;padding-top: 5px;">
+          <el-button style="width: 300px;font-size: 18px;" class="login-btn-submit" type="primary" @click="dataFormSubmit()">登录</el-button>
+        </el-form-item>
+      </el-form>
     </div>
   </div>
 </template>
@@ -80,79 +82,46 @@
 </script>
 
 <style lang="scss">
-  .site-wrapper.site-page--login {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(38, 50, 56, .6);
-    overflow: hidden;
-    &:before {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      content: "";
-      background-image: url(~@/assets/img/login_bg.jpg);
-      background-size: cover;
-    }
-    .site-content__wrapper {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      padding: 0;
-      margin: 0;
-      overflow-x: hidden;
-      overflow-y: auto;
-      background-color: transparent;
-    }
-    .site-content {
-      min-height: 100%;
-      padding: 30px 500px 30px 30px;
-    }
-    .brand-info {
-      margin: 220px 100px 0 90px;
-      color: #fff;
-    }
-    .brand-info__text {
-      margin:  0 0 22px 0;
-      font-size: 48px;
-      font-weight: 400;
-      text-transform : uppercase;
-    }
-    .brand-info__intro {
-      margin: 10px 0;
-      font-size: 16px;
-      line-height: 1.58;
-      opacity: .6;
-    }
-    .login-main {
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: 150px 60px 180px;
-      width: 470px;
-      min-height: 100%;
-      background-color: #fff;
-    }
-    .login-title {
-      font-size: 16px;
-    }
-    .login-captcha {
-      overflow: hidden;
-      > img {
-        width: 100%;
-        cursor: pointer;
-      }
-    }
-    .login-btn-submit {
-      width: 100%;
-      margin-top: 38px;
-    }
-  }
+html,body {
+  height: 100%;
+}
+
+.bg {
+	background:url(~@/assets/img/login_bg_0.jpg) #f8f6e9 0 0 no-repeat;
+  background-size: cover;
+}
+
+.signin {
+	width:477px;
+	height:479px;
+	background:url(~@/assets/bg/login/login_bg.png) no-repeat;
+	margin:0 auto;
+
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-239px;
+	margin-left:-238px;
+}
+.signin-head {
+	margin:0 auto;
+	padding-top:30px;
+	width:120px;
+}
+.img-circle{
+  border-radius: 50%;
+}
+input{
+  height: 44px !important;
+}
+
+.el-form-item {
+    margin-bottom: 20px !important;
+}
+
+.login-title {
+  font-size: 16px;
+  margin-left: 50px;
+}
+
 </style>

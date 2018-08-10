@@ -80,8 +80,8 @@
               url: this.$http.adornUrl('/sys/user/password'),
               method: 'post',
               data: this.$http.adornData({
-                'password': this.dataForm.password,
-                'newPassword': this.dataForm.newPassword
+                'password': this.md5(this.dataForm.password),
+                'newPassword': this.md5(this.dataForm.newPassword)
               })
             }).then(({data}) => {
               if (data && data.code === 0) {
@@ -108,4 +108,3 @@
     }
   }
 </script>
-

@@ -2,15 +2,18 @@
   <div class="mod-log">
     <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
       <el-form-item>
-        <el-input v-model="dataForm.key" placeholder="用户名／用户操作" clearable></el-input>
+        <el-input v-model="dataForm.key" placeholder="用户名／用户操作" clearable>
+          <i slot="prefix" class="el-input__icon el-icon-search"></i>
+        </el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click="getDataList()">查询</el-button>
+        <el-button @click="getDataList()" type="primary" plain>查询</el-button>
       </el-form-item>
     </el-form>
     <el-table
       :data="dataList"
       border
+      stripe
       v-loading="dataListLoading"
       style="width: 100%">
       <el-table-column
@@ -52,7 +55,7 @@
         prop="time"
         header-align="center"
         align="center"
-        label="执行时长(毫秒)">
+        label="执行时长(ms)">
       </el-table-column>
       <el-table-column
         prop="ip"
@@ -136,7 +139,3 @@
     }
   }
 </script>
-
-<style>
-
-</style>

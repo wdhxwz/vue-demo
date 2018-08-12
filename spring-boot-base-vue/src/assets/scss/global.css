@@ -1,3 +1,10 @@
-.el-pagination input{
-  height: 28px !important;
+.el-input--medium .el-input__inner {
+  height: 36px !important;
 }
+
+.el-pagination .el-input--medium .el-input__inner {
+  height: 28px !important;
+  line-height: 0%;
+}
+
+

@@ -53,6 +53,7 @@
         prop="status"
         header-align="center"
         align="center"
+        width="80"
         label="状态">
         <template slot-scope="scope">
           <el-tag v-if="scope.row.status === 0" size="small" type="danger">禁用</el-tag>
@@ -70,7 +71,7 @@
         fixed="right"
         header-align="center"
         align="center"
-        width="150"
+        width="130"
         label="操作">
         <template slot-scope="scope">
           <el-button v-if="isAuth('sys:user:update')" type="text" size="small" @click="addOrUpdateHandle(scope.row.userId)">修改</el-button>

@@ -5,12 +5,12 @@
     :visible.sync="visible">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
       <el-form-item label="用户名" prop="userName">
-        <el-input v-model="dataForm.userName" placeholder="登录帐号"></el-input>
+        <el-input v-model="dataForm.userName" placeholder="登录帐号" :disabled="!dataForm.id ?false:true"></el-input>
       </el-form-item>
-      <el-form-item label="密码" prop="password" :class="{ 'is-required': !dataForm.id }">
+      <el-form-item label="密码" prop="password" :class="{ 'is-required': !dataForm.id }" v-if="!dataForm.id">
         <el-input v-model="dataForm.password" type="password" placeholder="密码"></el-input>
       </el-form-item>
-      <el-form-item label="确认密码" prop="comfirmPassword" :class="{ 'is-required': !dataForm.id }">
+      <el-form-item label="确认密码" prop="comfirmPassword" :class="{ 'is-required': !dataForm.id }" v-if="!dataForm.id">
         <el-input v-model="dataForm.comfirmPassword" type="password" placeholder="确认密码"></el-input>
       </el-form-item>
       <el-form-item label="邮箱" prop="email">
@@ -32,7 +32,7 @@
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
-      <el-button @click="visible = false">取消</el-button>
+      <el-button @click="visible = false;this.dataForm = []">取消</el-button>
       <el-button type="primary" @click="dataFormSubmit()">确定</el-button>
     </span>
   </el-dialog>
@@ -132,6 +132,7 @@
                 this.dataForm.userName = data.data.username
                 this.dataForm.salt = data.data.salt
                 this.dataForm.email = data.data.email
+                this.dataForm.password = data.data.password
                 this.dataForm.mobile = data.data.mobile
                 this.dataForm.roleIdList = data.data.roleIdList
                 this.dataForm.status = data.data.status
@@ -168,6 +169,7 @@
                     this.$emit('refreshDataList')
                   }
                 })
+                this.dataForm = []
               } else {
                 this.$message.error(data.msg)
               }

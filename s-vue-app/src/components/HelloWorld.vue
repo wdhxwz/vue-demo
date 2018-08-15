@@ -26,6 +26,19 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  created: function () {
+    // 设置cookie
+    this.$cookies.set('name','wangdh')
+
+    // 获取所有cookie的key
+    var keys = this.$cookies.keys()
+
+    keys.forEach(key => {
+      // 获取cookie的值
+      console.log('key=' + this.$cookies.get(key))
+    });
+    
   }
 }
 </script>

@@ -38,7 +38,11 @@ export default {
       // 获取cookie的值
       console.log('key=' + this.$cookies.get(key))
     });
-    
+
+    // 状态值得读取和设置
+    console.log(this.$store.state.count)
+    this.$store.commit('increment')
+    console.log(this.$store.state.count)
   }
 }
 </script>

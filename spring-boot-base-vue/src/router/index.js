@@ -68,12 +68,12 @@ router.beforeEach((to, from, next) => {
       if (data && data.code === 0) {
         fnAddDynamicMenuRoutes(data.data.menuList)
         router.options.isAddDynamicMenuRoutes = true
-        sessionStorage.setItem('menuList', JSON.stringify(data.data.menuList || '[]'))
-        sessionStorage.setItem('permissions', JSON.stringify(data.data.permissions || '[]'))
+        window.sessionStorage.setItem('menuList', JSON.stringify(data.data.menuList || '[]'))
+        window.sessionStorage.setItem('permissions', JSON.stringify(data.data.permissions || '[]'))
         next({ ...to, replace: true })
       } else {
-        sessionStorage.setItem('menuList', '[]')
-        sessionStorage.setItem('permissions', '[]')
+        window.sessionStorage.setItem('menuList', '[]')
+        window.sessionStorage.setItem('permissions', '[]')
         next()
       }
     })
@@ -142,7 +142,7 @@ function fnAddDynamicMenuRoutes (menuList = [], routes = []) {
       mainRoutes,
       { path: '*', redirect: { name: '404' } }
     ])
-    sessionStorage.setItem('dynamicMenuRoutes', JSON.stringify(mainRoutes.children || '[]'))
+    window.sessionStorage.setItem('dynamicMenuRoutes', JSON.stringify(mainRoutes.children || '[]'))
     console.log('\n')
     console.log('%c!<-------------------- 动态(菜单)路由 s -------------------->', 'color:blue')
     console.log(mainRoutes.children)

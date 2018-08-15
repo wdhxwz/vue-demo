@@ -1,6 +1,6 @@
 # s-vue-app
 
-> A Vue.js project
+> my second vue.js project for learning
 
 ## Build Setup
 

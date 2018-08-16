@@ -43,6 +43,22 @@ export default {
     console.log(this.$store.state.count)
     this.$store.commit('increment')
     console.log(this.$store.state.count)
+
+    // 计算MD5
+    console.log(this.md5('123456'))
+
+    // base64编码
+    var base64Code = this.Base64.encode('i am wangdh')
+    console.log(base64Code)
+    console.log(this.Base64.decode(base64Code))
+
+    // qs
+    console.log(this.qs.stringify({'name':'wangdh','age':'22'}))
+    console.log(this.qs.parse('name=wangdh&age=22'))
+
+    // lodash
+    console.log(this.lodash.random(20))
+    console.log(this.lodash.merge({'name':'wangdh'},{'age':'22'}))
   }
 }
 </script>

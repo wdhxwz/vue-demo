@@ -136,6 +136,7 @@
       },
       // 新增 / 修改
       addOrUpdateHandle (id) {
+        console.log('sysConfig id ' + id)
         this.addOrUpdateVisible = true
         this.$nextTick(() => {
           this.$refs.addOrUpdate.init(id)

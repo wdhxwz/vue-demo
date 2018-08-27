@@ -2,8 +2,8 @@
   <nav class="site-navbar" :class="'site-navbar--' + navbarLayoutType">
     <div class="site-navbar__header">
       <h1 class="site-navbar__brand" @click="$router.push({ name: 'home' })">
-        <a class="site-navbar__brand-lg" href="javascript:;">基础项目</a>
-        <a class="site-navbar__brand-mini" href="javascript:;" style="font-size:13px;">基础项目</a>
+        <a class="site-navbar__brand-lg" href="javascript:;">{{projectName}}</a>
+        <a class="site-navbar__brand-mini" href="javascript:;" style="font-size:13px;">{{projectName}}</a>
       </h1>
     </div>
     <div class="site-navbar__body clearfix">
@@ -17,14 +17,6 @@
       <el-menu
         class="site-navbar__menu site-navbar__menu--right"
         mode="horizontal">
-        <!-- 不要修改样式 -->
-        <!-- <el-menu-item index="1" @click="$router.push({ name: 'theme' })">
-          <template slot="title">
-            <el-badge value="new">
-              <icon-svg name="shezhi" class="el-icon-setting"></icon-svg>
-            </el-badge>
-          </template>
-        </el-menu-item> -->
         <el-menu-item class="site-navbar__avatar" index="3">
           <el-dropdown :show-timeout="0" placement="bottom">
             <span class="el-dropdown-link">
@@ -68,6 +60,9 @@
       },
       userName: {
         get () { return this.$store.state.user.name }
+      },
+      projectName: {
+        get () { return this.$store.state.common.projectName }
       }
     },
     methods: {

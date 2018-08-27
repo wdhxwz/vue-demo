@@ -5,7 +5,7 @@
     :visible.sync="visible">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
       <el-form-item label="参数名" prop="paramKey">
-        <el-input v-model="dataForm.paramKey" placeholder="参数名"></el-input>
+        <el-input v-model="dataForm.paramKey" placeholder="参数名" :disabled="!dataForm.id ? false : true"></el-input>
       </el-form-item>
       <el-form-item label="参数值" prop="paramValue">
         <el-input v-model="dataForm.paramValue" placeholder="参数值"></el-input>
@@ -50,14 +50,16 @@
           this.$refs['dataForm'].resetFields()
           if (this.dataForm.id) {
             this.$http({
-              url: this.$http.adornUrl(`/sys/config/info/${this.dataForm.id}`),
-              method: 'get',
-              params: this.$http.adornParams()
+              url: this.$http.adornUrl(`/sys/config/item`),
+              method: 'post',
+              data: this.$http.adornData({
+                'id': this.dataForm.id
+              })
             }).then(({data}) => {
               if (data && data.code === 0) {
-                this.dataForm.paramKey = data.config.paramKey
-                this.dataForm.paramValue = data.config.paramValue
-                this.dataForm.remark = data.config.remark
+                this.dataForm.paramKey = data.data.paramKey
+                this.dataForm.paramValue = data.data.paramValue
+                this.dataForm.remark = data.data.remark
               }
             })
           }

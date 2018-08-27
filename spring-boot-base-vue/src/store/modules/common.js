@@ -14,7 +14,8 @@ export default {
     menuActiveName: '',
     // 主入口标签页
     mainTabs: [],
-    mainTabsActiveName: ''
+    mainTabsActiveName: '',
+    projectName: ''
   },
   mutations: {
     updateDocumentClientHeight (state, height) {
@@ -40,6 +41,9 @@ export default {
     },
     updateMainTabsActiveName (state, name) {
       state.mainTabsActiveName = name
+    },
+    updateProjectName (state, projectName) {
+      state.projectName = projectName
     }
   }
 }

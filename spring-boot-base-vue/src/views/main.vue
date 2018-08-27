@@ -44,10 +44,15 @@
       userName: {
         get () { return this.$store.state.user.name },
         set (val) { this.$store.commit('user/updateName', val) }
+      },
+      projectName: {
+        get () { return this.$store.state.common.projectName },
+        set (val) { this.$store.commit('common/updateProjectName', val) }
       }
     },
     created () {
       this.getUserInfo()
+      this.getSystemInfo()
     },
     mounted () {
       this.resetDocumentClientHeight()
@@ -71,6 +76,17 @@
             this.loading = false
             this.userId = data.data.userId
             this.userName = data.data.username
+          }
+        })
+      },
+      getSystemInfo () {
+        this.$http({
+          url: this.$http.adornUrl('/sys/config/sysConfig'),
+          method: 'get',
+          params: this.$http.adornParams()
+        }).then(({data}) => {
+          if (data && data.code === 0) {
+            this.projectName = data.data.paramValue
           }
         })
       }

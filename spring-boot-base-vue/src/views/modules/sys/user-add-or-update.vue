@@ -136,6 +136,8 @@
                 this.dataForm.mobile = data.data.mobile
                 this.dataForm.roleIdList = data.data.roleIdList
                 this.dataForm.status = data.data.status
+              } else {
+                alert(data.message)
               }
             })
           }
@@ -171,7 +173,7 @@
                 })
                 this.dataForm = []
               } else {
-                this.$message.error(data.msg)
+                this.$message.error(data.message)
               }
             })
           }

@@ -167,7 +167,7 @@
                 }
               })
             } else {
-              this.$message.error(data.msg)
+              this.$message.error(data.message)
             }
           })
         }).catch(() => {})
